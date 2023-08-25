@@ -1,0 +1,10 @@
+Dockerfile
+.dockerignore
+.ssh
+*.md
+.git
+nlp-gpu-jupyter-private-key.ppk  
+nlp-gpu-jupyter-public-key
+LICENSE
+run266.ps1
+docker-compose.yml

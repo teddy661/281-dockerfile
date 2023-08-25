@@ -111,6 +111,7 @@ RUN pip3 install --no-cache-dir \
                 jupyter_bokeh \
                 jupyter-server-proxy \
                 jupyter_http_over_ws \
+                jupyter-collaboration \
                 pyyaml \
                 yapf \
                 nbqa \

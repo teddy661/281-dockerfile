@@ -5,7 +5,8 @@ FROM ebrown/git:latest as built_git
 FROM ebrown/xgboost:1.7.6 as built_xgboost
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-rockylinux8 AS prod
 SHELL ["/bin/bash", "-c"]
-RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+RUN dnf install https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
+RUN dnf module install nodejs:18/common -y
 ## 
 ## TensorRT drags in a bunch of dependencies that we don't need
 ## tried replacing it with lean runtime, but that didn't work
@@ -43,7 +44,6 @@ RUN dnf update --disablerepo=cuda -y && \
                 sqlite-devel \
                 graphviz \
                 gdbm-devel gdbm \
-                nodejs \
                 procps-ng \
                 findutils -y && \
     dnf clean all
@@ -68,7 +68,7 @@ RUN pip3 install --no-cache-dir \
                 Pillow \
                 numpy==1.24.3 \
                 cmake 
-RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip3 install --no-cache-dir /tmp/xgboost-1.7.6-cp311-cp311-linux_x86_64.whl
 RUN pip3 install --no-cache-dir \
                 # tensorflow requires numpy <= 1.24.3
@@ -84,7 +84,7 @@ RUN pip3 install --no-cache-dir \
                 black[jupyter] \
                 matplotlib \
                 blake3 \
-                papermill[all] \
+#                papermill[all] \
                 statsmodels \
                 psutil \
                 mypy \
@@ -116,7 +116,7 @@ RUN pip3 install --no-cache-dir \
                 yapf \
                 nbqa \
                 ruff \
-                ploomber \
+#                ploomber \
                 evaluate[template] \
                 pipdeptree \
                 hydra-core

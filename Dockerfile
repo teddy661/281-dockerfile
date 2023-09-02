@@ -5,8 +5,7 @@ FROM ebrown/git:latest as built_git
 FROM ebrown/xgboost:1.7.6 as built_xgboost
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-rockylinux8 AS prod
 SHELL ["/bin/bash", "-c"]
-RUN dnf install https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
-RUN dnf module install nodejs:18/common -y
+RUN dnf install https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y && dnf module install nodejs:18/common -y
 ## 
 ## TensorRT drags in a bunch of dependencies that we don't need
 ## tried replacing it with lean runtime, but that didn't work

@@ -180,7 +180,7 @@ c = get_config()  #noqa
 #          module, unless it is overridden using the --browser
 #          (ServerApp.browser) configuration option.
 #  Default: False
-# c.ExtensionApp.open_browser = False
+c.ExtensionApp.open_browser = False
 
 ## Settings that will passed to the server.
 #  Default: {}
@@ -618,7 +618,7 @@ c = get_config()  #noqa
 #  
 #          Takes precedence over allow_origin_pat.
 #  Default: ''
-c.NotebookApp.allow_origin = '*'
+c.ServerApp.allow_origin = '*'
 
 ## Use a regular expression for the Access-Control-Allow-Origin header
 #  
@@ -962,7 +962,7 @@ c.ServerApp.ip = '0.0.0.0'
 
 ## The directory to use for notebooks and kernels.
 #  Default: ''
-# c.ServerApp.root_dir = ''
+c.ServerApp.root_dir = '/tf/notebooks'
 
 ## The session manager class to use.
 #  Default: 'builtins.object'

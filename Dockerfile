@@ -122,7 +122,9 @@ RUN pip3 install --no-cache-dir \
 #                ploomber \
                 evaluate[template] \
                 pipdeptree \
-                hydra-core
+                hydra-core \
+                bottleneck \ 
+                pytest 
 WORKDIR /root
 COPY . .
 ENV TERM=xterm-256color

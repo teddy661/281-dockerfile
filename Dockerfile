@@ -64,21 +64,19 @@ ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 WORKDIR /usr/local/cuda-11.8/lib64
 RUN ln -s libnvrtc.so.11.8.89  libnvrtc.so \
     && mkdir -p /root/.ssh && chmod 700 /root/.ssh 
-RUN python3 -m pip install --no-cache-dir --upgrade pip
+RUN python3 -m pip install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir -U setuptools 
 RUN pip3 install --no-cache-dir \
                 certifi \
                 networkx \
                 Pillow \
-                numpy==1.24.3 \
+                numpy==1.26 \
                 cmake 
 # RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip3 install --no-cache-dir /tmp/xgboost-1.7.6-cp311-cp311-linux_x86_64.whl
 RUN pip3 install --no-cache-dir \
                 # tensorflow requires numpy <= 1.24.3
                 # update to pandas-stubs requires numpy > 1.24
-                tensorflow==2.12.1 \
-                tensorflow-text \
-                tensorflow-datasets \
+                tensorflow==2.14.0 \
                 ipython \
                 bokeh \
                 seaborn \

@@ -46,8 +46,8 @@ RUN dnf update --disablerepo=cuda -y && \
                 findutils -y && \
     dnf clean all
 WORKDIR /opt/nodejs
-RUN curl https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz | xzcat | tar -xf -
-ENV PATH=/opt/nodejs/node-v18.17.1-linux-x64/bin:${PATH}
+RUN curl https://nodejs.org/dist/v18.18.0/node-v18.18.0-linux-x64.tar.xz | xzcat | tar -xf -
+ENV PATH=/opt/nodejs/node-v18.18.0-linux-x64/bin:${PATH}
 RUN npm install -g npm && \
     npm install -g yarn
 RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa \

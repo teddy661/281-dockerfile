@@ -85,7 +85,7 @@ RUN pip3 install --no-cache-dir \
                 black[jupyter] \
                 matplotlib \
                 blake3 \
-#                papermill[all] \
+                papermill[all] \
                 statsmodels \
                 psutil \
                 mypy \
@@ -117,7 +117,7 @@ RUN pip3 install --no-cache-dir \
                 yapf \
                 nbqa[toolchain] \
                 ruff \
-#                ploomber \
+                ploomber \
                 evaluate[template] \
                 pipdeptree \
                 hydra-core \

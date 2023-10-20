@@ -91,6 +91,7 @@ RUN pip3 install --no-cache-dir \
                 psutil \
                 mypy \
                 pandas \
+                tables \
                 pyarrow \
                 polars[all] \
                 openpyxl \

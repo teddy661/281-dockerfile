@@ -46,9 +46,11 @@ RUN dnf update --disablerepo=cuda -y && \
                 findutils -y && \
     dnf clean all
 WORKDIR /opt/nodejs
-ARG INSTALL_NODE_VERSION=18.18.2
-RUN curl https://nodejs.org/dist/v${INSTALL_NODE_VERSION}/node-v${INSTALL_NODE_VERSION}-linux-x64.tar.xz | xzcat | tar -xf -
-ENV PATH=/opt/nodejs/node-v${INSTALL_NODE_VERSION}-linux-x64/bin:${PATH}
+ARG INSTALL_NODE_VERSION=21.1.0
+RUN curl -L https://nodejs.org/dist/v${INSTALL_NODE_VERSION}/node-v${INSTALL_NODE_VERSION}-linux-x64.tar.xz | xzcat | tar -xf -
+WORKDIR /opt/nvim
+RUN curl -L https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar -zxf -
+ENV PATH=/opt/nodejs/node-v${INSTALL_NODE_VERSION}-linux-x64/bin:/opt/nvim/nvim-linux64/bin:${PATH}
 RUN npm install -g npm && \
     npm install -g yarn
 RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa \
@@ -69,14 +71,11 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip && pip3 install --no-cac
 RUN pip3 install --no-cache-dir \
                 certifi \
                 networkx \
-                Pillow \
                 numpy==1.26.1 \
                 cmake 
 # RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip3 install --no-cache-dir /tmp/xgboost-1.7.6-cp311-cp311-linux_x86_64.whl
 RUN pip3 install --no-cache-dir \
-                # tensorflow requires numpy <= 1.24.3
-                # update to pandas-stubs requires numpy > 1.24
                 tensorflow==2.14.0 \
                 ipython \
                 bokeh \
@@ -90,7 +89,7 @@ RUN pip3 install --no-cache-dir \
                 statsmodels \
                 psutil \
                 mypy \
-                pandas \
+                "pandas[performance, computation, plot, output_formatting, html, hd5f]" \
                 tables \
                 pyarrow \
                 polars[all] \

@@ -89,7 +89,7 @@ RUN pip3 install --no-cache-dir \
                 statsmodels \
                 psutil \
                 mypy \
-                "pandas[performance, computation, plot, output_formatting, html, hd5f]" \
+                "pandas[performance, computation, plot, output_formatting, html, hdf5]" \
                 tables \
                 pyarrow \
                 polars[all] \

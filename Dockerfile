@@ -89,7 +89,7 @@ RUN pip3 install --no-cache-dir \
                 statsmodels \
                 psutil \
                 mypy \
-                "pandas[performance, computation, plot, output_formatting, html, hdf5]" \
+                "pandas[performance, excel, computation, plot, output_formatting, html, hdf5]" \
                 tables \
                 pyarrow \
                 polars[all] \
@@ -118,8 +118,8 @@ RUN pip3 install --no-cache-dir \
                 yapf \
                 nbqa[toolchain] \
                 ruff \
-                ploomber \
-                evaluate[template] \
+#                ploomber \
+#                evaluate[template] \
                 pipdeptree \
                 hydra-core \
                 bottleneck \ 

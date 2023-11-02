@@ -90,10 +90,10 @@ RUN pip3 install --no-cache-dir \
                 statsmodels \
                 psutil \
                 mypy \
-                "pandas[performance, excel, computation, plot, output_formatting, html, hdf5]" \
+                "pandas[performance, excel, computation, plot, output_formatting, html, parquet, hdf5]" \
                 tables \
                 pyarrow \
-                polars[all] \
+                "polars[numpy, pandas, pyarrow, timezone]" \
                 openpyxl \
                 apsw \
                 pydot \
@@ -124,7 +124,8 @@ RUN pip3 install --no-cache-dir \
                 pipdeptree \
                 hydra-core \
                 bottleneck \ 
-                pytest 
+                pytest \
+                zstandard
 WORKDIR /root
 COPY . .
 ENV TERM=xterm-256color

@@ -3,7 +3,7 @@
 FROM ebrown/python:3.11 as built_python
 FROM ebrown/git:latest as built_git
 FROM ebrown/xgboost:2.0.1 as built_xgboost
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-rockylinux8 AS prod
+FROM nvidia/cuda:12.2.2-cudnn8-runtime-rockylinux8 AS prod
 SHELL ["/bin/bash", "-c"]
 ## 
 ## TensorRT drags in a bunch of dependencies that we don't need
@@ -13,14 +13,14 @@ SHELL ["/bin/bash", "-c"]
 RUN dnf update --disablerepo=cuda -y && \
     dnf install \
                 # tensorrt-8.6.0.12-1.cuda11.8 \
-                cuda-command-line-tools-11-8 \
-                cuda-cudart-devel-11-8 \
-                cuda-nvcc-11-8 \
-                cuda-cupti-11-8 \
-                cuda-nvprune-11-8 \
-                cuda-nvrtc-11-8 \
-                libnvinfer-plugin8-8.6.0.12-1.cuda11.8 \
-                libnvinfer8-8.6.0.12-1.cuda11.8 \
+                cuda-command-line-tools-12-2-12.2.2-1 \
+                cuda-cudart-devel-12-2-12.2.140-1 \
+                cuda-nvcc-12-2-12.2.140-1 \
+                cuda-cupti-12-2-12.2.142-1 \
+                cuda-nvprune-12-2-12.2.140-1 \
+                cuda-nvrtc-12-2-12.2.140-1 \
+                libnvinfer-plugin8-8.6.1.6-1.cuda12.0 \
+                libnvinfer8-8.6.1.6-1.cuda12.0 \
                 unzip \
                 curl \
                 wget \

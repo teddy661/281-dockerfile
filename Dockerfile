@@ -64,10 +64,7 @@ COPY --from=built_xgboost /tmp/bxgboost/xgboost/python-package/xgboost-${XGB_VER
 ENV LD_LIBRARY_PATH=/opt/python/py311/lib:${LD_LIBRARY_PATH}
 ENV PATH=/opt/git/bin:/opt/python/py311/bin:${PATH}
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
-## Fix an odd bug in tensorrt
-WORKDIR /usr/local/cuda-11.8/lib64
-RUN ln -s libnvrtc.so.11.8.89  libnvrtc.so \
-    && mkdir -p /root/.ssh && chmod 700 /root/.ssh 
+RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh 
 RUN python3 -m pip install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir -U setuptools wheel
 RUN pip3 install --no-cache-dir \
                 certifi \

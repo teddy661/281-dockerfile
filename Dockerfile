@@ -80,7 +80,7 @@ RUN pip3 install --no-cache-dir \
                 seaborn \
                 aiohttp[speedups] \
                 jupyterlab \
-                jupyter_server==2.10.0 \
+                jupyter_server==2.10.1 \
                 black[jupyter] \
                 matplotlib \
                 blake3 \

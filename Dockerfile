@@ -82,7 +82,7 @@ RUN pip3 install --no-cache-dir \
                 jupyterlab>=4.0.9 \
                 jupyterlab-lsp==5.0.1 \
                 jupyter-lsp==2.2.1 \
-                jupyter_server==2.10.1 \
+                jupyter_server \
                 black[jupyter] \
                 matplotlib \
                 blake3 \

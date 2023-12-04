@@ -101,6 +101,7 @@ RUN pip3 install --no-cache-dir \
                 pydot-ng \
                 pydotplus \
                 graphviz \
+                scikit-learn-intelex \
                 scikit-learn \
                 scikit-image \
                 sklearn-pandas \

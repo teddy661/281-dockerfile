@@ -126,7 +126,15 @@ RUN pip3 install --no-cache-dir \
                 hydra-core \
                 bottleneck \ 
                 pytest \
-                zstandard
+                zstandard \
+                cloudpickle \
+                connectorx \
+                deltalake \
+                gevent \
+                pydantic \
+                xlsx2csv \
+                sqlalchemy 
+
 WORKDIR /root
 COPY . .
 ENV TERM=xterm-256color

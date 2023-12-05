@@ -74,7 +74,7 @@ RUN pip3 install --no-cache-dir \
 # RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 RUN pip3 install --no-cache-dir /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
 RUN pip3 install --no-cache-dir \
-                tensorflow==2.15.0 \
+                tensorflow==2.15.0.post1 \
                 ipython \
                 bokeh \
                 seaborn \

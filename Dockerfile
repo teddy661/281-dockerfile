@@ -93,7 +93,7 @@ RUN pip3 install --no-cache-dir \
                 "pandas[performance, excel, computation, plot, output_formatting, html, parquet, hdf5]" \
                 tables \
                 pyarrow \
-                "polars[numpy, pandas, pyarrow, timezone]" \
+                "polars[all]" \
                 openpyxl \
                 apsw \
                 pydot \

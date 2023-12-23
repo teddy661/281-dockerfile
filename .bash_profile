@@ -18,5 +18,3 @@ export PYDEVD_DISABLE_FILE_VALIDATION
 
 TERM=xterm-256color
 export TERM
-
-. /opt/intel/oneapi/setvars.sh

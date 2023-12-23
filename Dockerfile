@@ -141,5 +141,4 @@ WORKDIR /root
 COPY . .
 ENV TERM=xterm-256color
 ENV SHELL=/bin/bash
-RUN source /opt/intel/oneapi/setvars.sh
 CMD ["bash", "-c", "jupyter lab"]

@@ -66,11 +66,13 @@ ENV PATH=/opt/git/bin:/opt/python/py311/bin:${PATH}
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh 
 RUN python3 -m pip install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir -U setuptools wheel
-RUN pip3 install --no-cache-dir \
-                certifi \
-                networkx \
-                numpy==1.26.2 \
-                cmake 
+WORKDIR /tmp
+COPY installmkl.sh ./installmkl.sh
+COPY numpy-1.26.2-cp311-cp311-linux_x86_64.whl ./numpy-1.26.2-cp311-cp311-linux_x86_64.whl
+COPY scipy-1.11.4-cp311-cp311-linux_x86_64.whl ./scipy-1.11.4-cp311-cp311-linux_x86_64.whl
+RUN ./installmkl.sh
+RUN pip3 install --no-cache-dir numpy-1.26.2-cp311-cp311-linux_x86_64.whl && \
+    pip3 install --no-cache-dir scipy-1.11.4-cp311-cp311-linux_x86_64.whl
 # RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 RUN pip3 install --no-cache-dir /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
 RUN pip3 install --no-cache-dir \
@@ -139,4 +141,5 @@ WORKDIR /root
 COPY . .
 ENV TERM=xterm-256color
 ENV SHELL=/bin/bash
+RUN source /opt/intel/oneapi/setvars.sh
 CMD ["bash", "-c", "jupyter lab"]

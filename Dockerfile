@@ -62,13 +62,7 @@ COPY --from=built_python /opt/python/py311 /opt/python/py311
 COPY --from=built_git /opt/git /opt/git
 ARG XGB_VERSION=2.0.1
 COPY --from=built_xgboost /tmp/bxgboost/xgboost/python-package/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
-ENV LD_LIBRARY_PATH=/opt/intel/oneapi/tbb/2021.11/env/../lib/intel64/gcc4.8:/opt/intel/oneapi/mkl/2024.0/lib:/opt/intel/oneapi/compiler/2024.0/opt/compiler/lib:/opt/intel/oneapi/compiler/2024.0/lib:/opt/python/py311/lib:${LD_LIBRARY_PATH}
-ENV LIBRARY_PATH=LIBRARY_PATH=/opt/intel/oneapi/tbb/2021.11/env/../lib/intel64/gcc4.8:/opt/intel/oneapi/mkl/2024.0/lib/:/opt/intel/oneapi/compiler/2024.0/lib:${LIBRARY_PATH}
-ENV CPATH=/opt/intel/oneapi/tbb/2021.11/env/../include:/opt/intel/oneapi/mkl/2024.0/include:/opt/intel/oneapi/compiler/2024.0/include:${CPATH}
-ENV OCL_ICD_FILENAMES=/opt/intel/oneapi/compiler/2024.0/lib/libintelocl.so
-ENV ONEAPI_ROOT=/opt/intel/oneapi
-ENV MKLROOT=/opt/intel/oneapi/mkl/2024.0
-ENV TBBROOT=/opt/intel/oneapi/tbb/2021.11/env/..
+ENV LD_LIBRARY_PATH=/opt/python/py311/lib:${LD_LIBRARY_PATH}
 ENV PATH=/opt/git/bin:/opt/python/py311/bin:${PATH}
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh 

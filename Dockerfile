@@ -2,7 +2,7 @@
 ## Production Image Below
 FROM ebrown/python:3.11 as built_python
 FROM ebrown/git:latest as built_git
-FROM ebrown/xgboost:2.0.1 as built_xgboost
+FROM ebrown/xgboost:2.0.3 as built_xgboost
 FROM nvidia/cuda:12.2.2-cudnn8-runtime-rockylinux8 AS prod
 SHELL ["/bin/bash", "-c"]
 ## 
@@ -60,8 +60,8 @@ RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa \
     && ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 COPY --from=built_python /opt/python/py311 /opt/python/py311
 COPY --from=built_git /opt/git /opt/git
-ARG XGB_VERSION=2.0.1
-COPY --from=built_xgboost /tmp/bxgboost/xgboost/python-package/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
+ARG XGB_VERSION=2.0.3
+COPY --from=built_xgboost /tmp/bxgboost/xgboost-${XGB_VERSION}/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
 ENV LD_LIBRARY_PATH=/opt/python/py311/lib:${LD_LIBRARY_PATH}
 ENV PATH=/opt/git/bin:/opt/python/py311/bin:${PATH}
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
@@ -142,4 +142,5 @@ WORKDIR /root
 COPY . .
 ENV TERM=xterm-256color
 ENV SHELL=/bin/bash
+ENTRYPOINT ["/root/ep.sh"]
 CMD ["bash", "-c", "jupyter lab"]

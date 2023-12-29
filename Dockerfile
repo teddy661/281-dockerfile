@@ -140,7 +140,9 @@ RUN pip3 install --no-cache-dir \
 
 WORKDIR /root
 COPY . .
+COPY entrypoint.sh /usr/local/bin
+RUN chmod 755 /usr/local/bin/entrypoint.sh
 ENV TERM=xterm-256color
 ENV SHELL=/bin/bash
-ENTRYPOINT ["/root/ep.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["bash", "-c", "jupyter lab"]

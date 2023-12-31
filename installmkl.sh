@@ -11,7 +11,7 @@ gpgkey=https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.
 EOF
 mv /tmp/oneAPI.repo /etc/yum.repos.d
 # dnf install xsimd-devel intel-oneapi-mkl.x86_64 -y 
-dnf install intel-oneapi-mkl.x86_64 -y 
+dnf install intel-oneapi-mkl.x86_64 -y && dnf clean all
 source /opt/intel/oneapi/setvars.sh
 cd /tmp
 python -m pip install --upgrade pip

@@ -11,8 +11,8 @@ SHELL ["/bin/bash", "-c"]
 ## The below code appears to resolve that issue.
 ##
 RUN yum install dnf-plugins-core -y && \
-    dnf config-manager --set-enabled powertools -y && \
     dnf install epel-release -y && \
+    /usr/bin/crb enable -y && \
     dnf --disablerepo=cuda update -y && \
     dnf install \
                 cuda-command-line-tools-12-2-12.2.2-1 \
@@ -41,7 +41,7 @@ RUN yum install dnf-plugins-core -y && \
                 libgfortran \
                 uuid uuid-devel \
                 tcl-devel tcl\
-                tk-devel \
+                tk-devel tk\
                 sqlite-devel \
                 graphviz \
                 gdbm-devel gdbm \
@@ -103,6 +103,7 @@ RUN pip3 install --no-cache-dir \
                 pydot-ng \
                 pydotplus \
                 graphviz \
+                beautifulsoup4 \
                 scikit-learn-intelex \
                 scikit-learn \
                 scikit-image \

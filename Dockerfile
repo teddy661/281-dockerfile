@@ -71,10 +71,12 @@ ENV PATH=/opt/git/bin:/opt/python/py311/bin:${PATH}
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 WORKDIR /tmp
 COPY installmkl.sh ./installmkl.sh
-COPY numpy-1.26.3-cp311-cp311-linux_x86_64.whl ./numpy-1.26.3-cp311-cp311-linux_x86_64.whl
-COPY scipy-1.11.4-cp311-cp311-linux_x86_64.whl ./scipy-1.11.4-cp311-cp311-linux_x86_64.whl
+ARG PY_NP_VERSION=1.26.3
+ARG PY_SCIPY_VERSION=1.11.4 
+COPY numpy-${PY_NP_VERSION}-cp311-cp311-linux_x86_64.whl ./numpy-${PY_NP_VERSION}-cp311-cp311-linux_x86_64.whl
+COPY scipy-${PY_SCIPY_VERSION}-cp311-cp311-linux_x86_64.whl ./scipy-${PY_SCIPY_VERSION}-cp311-cp311-linux_x86_64.whl
 RUN ./installmkl.sh
-RUN pip3 install --no-cache-dir /tmp/numpy-1.26.2-cp311-cp311-linux_x86_64.whl /tmp/scipy-1.11.4-cp311-cp311-linux_x86_64.whl /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
+RUN pip3 install --no-cache-dir /tmp/numpy-${PY_NP_VERSION}-cp311-cp311-linux_x86_64.whl /tmp/scipy-${PY_SCIPY_VERSION}-cp311-cp311-linux_x86_64.whl /tmp/xgboost-${XGB_VERSION}-py3-none-linux_x86_64.whl
 RUN pip3 install --no-cache-dir \
                 tensorflow==2.15.0.post1 \
                 ipython \

@@ -84,8 +84,8 @@ RUN pip3 install --no-cache-dir \
                 seaborn \
                 aiohttp[speedups] \
                 jupyterlab>=4.0.9 \
-                jupyterlab-lsp==5.0.1 \
-                jupyter-lsp==2.2.1 \
+                jupyterlab-lsp==5.0.2 \
+                jupyter-lsp==2.2.2 \
                 jupyter_server \
                 black[jupyter] \
                 matplotlib \
